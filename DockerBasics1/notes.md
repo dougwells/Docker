@@ -28,6 +28,21 @@ $ eval $(docker-machine env default) 1
 Now test $ docker ps
 Should work -->
 
+# Working with IP Addresses
+docker run -p 8080:3000 imageName - (machine port : container port)
+Container export IP = http://192.168.99.100/
+Remember, whale icon:  “docker is configured to use the default machine with IP 192.168.99.100”
+Port can be ‘hit’ outside linux VM at this ip + port #
+Port can also be hit on host (OsX) on localhost:8080
+Finally, can hit port within Linux VM at localhost:3000
+Node example → $ docker run -p 8080:3000 node
+Node container can be hit by http://localhost: 3000 from WITHIN Linux VM.  
+To hit port from outside the Linux VM, we set external port to 8080 so container will export on Linux VM’s  ip address on port 8080 http://192.168.99.100:8080
+
+Tomcat example → $ docker run  -p 8888:8080 tomcat:8.0
+In OsX, hit at http://localhost:8888 or http://host-ip:8888
+
+
 
 # Docker Client
 Docker Client (DC) - download & manages images and containers from w/in linux virt box
@@ -116,4 +131,4 @@ $ docker network inspect [ID]	- network info (including containers in it)
 $ docker disconnect  [cont ID}	- disconnect a container from a network
 $ docker network rm [ntwk ID]	- remove entire network
 
-# Docker Compose	
+# Docker Compose
